@@ -1,0 +1,23 @@
+{
+  "name": "SC Mobile",
+  "short_name": "SC Mobile",
+  "description": "Standard Chartered PWA Application",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#012a4a",
+  "theme_color": "#012a4a",
+  "icons": [
+    {
+      "src": "/logo.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ]
+}
