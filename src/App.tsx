@@ -7,6 +7,8 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 import { Sidebar } from './components/Sidebar';
 import { DashboardPage } from './pages/DashboardPage';
 import { LoginPage } from './pages/LoginPage';
+import { MaintenancePage } from './pages/MaintenancePage';
+import { SettingsPage } from './pages/SettingsPage';
 
 // Create a mobile-first theme
 const getTheme = () => {
@@ -243,7 +245,7 @@ const AppLayout = () => {
               path="/accounts"
               element={
                 <ProtectedRoute>
-                  <div>Accounts Page</div>
+                  <MaintenancePage />
                 </ProtectedRoute>
               }
             />
@@ -251,7 +253,7 @@ const AppLayout = () => {
               path="/transfer"
               element={
                 <ProtectedRoute>
-                  <div>Transfer Page</div>
+                  <MaintenancePage />
                 </ProtectedRoute>
               }
             />
@@ -259,7 +261,7 @@ const AppLayout = () => {
               path="/transactions"
               element={
                 <ProtectedRoute>
-                  <div>Transactions Page</div>
+                  <MaintenancePage />
                 </ProtectedRoute>
               }
             />
@@ -267,7 +269,7 @@ const AppLayout = () => {
               path="/settings"
               element={
                 <ProtectedRoute>
-                  <div>Settings Page</div>
+                  <SettingsPage />
                 </ProtectedRoute>
               }
             />
@@ -275,7 +277,7 @@ const AppLayout = () => {
               path="/help"
               element={
                 <ProtectedRoute>
-                  <div>Help Center</div>
+                  <MaintenancePage />
                 </ProtectedRoute>
               }
             />

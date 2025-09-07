@@ -6,6 +6,7 @@ interface User {
   username: string;
   name: string;
   accountNumber: string;
+  balance: number;
 }
 
 interface AuthContextType {
@@ -14,14 +15,27 @@ interface AuthContextType {
   logout: () => void;
   isAuthenticated: boolean;
   loading: boolean;
+  updateUserBalance: (newBalance: number) => void;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
 // Hardcoded user credentials (for demo purposes only)
 const DEMO_USERS = [
-  { username: 'user1', password: 'password1', name: 'Vinamra Parashar', accountNumber: '23310972560' },
-  { username: 'user2', password: 'password2', name: 'Jane Smith', accountNumber: '0987654321' },
+  { 
+    username: 'user1', 
+    password: 'password1', 
+    name: 'Vinamra Parashar', 
+    accountNumber: '23310972560',
+    balance: 200000
+  },
+  { 
+    username: 'user2', 
+    password: 'password2', 
+    name: 'Jane Smith', 
+    accountNumber: '0987654321',
+    balance: 150000
+  },
 ];
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
@@ -40,6 +54,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
+  const updateUserBalance = (newBalance: number) => {
+    if (user) {
+      setUser({ ...user, balance: newBalance });
+    }
+  };
+
   const login = async (username: string, password: string): Promise<boolean> => {
     // Simulate API call
     return new Promise((resolve) => {
@@ -49,8 +69,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         );
 
         if (foundUser) {
-          const { username, name, accountNumber } = foundUser;
-          setUser({ username, name, accountNumber });
+          const { username, name, accountNumber, balance } = foundUser;
+          setUser({ username, name, accountNumber, balance });
           localStorage.setItem('isAuthenticated', 'true');
           resolve(true);
         } else {
@@ -67,7 +87,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, isAuthenticated: !!user, loading }}>
+    <AuthContext.Provider value={{ 
+      user, 
+      login, 
+      logout, 
+      updateUserBalance,
+      isAuthenticated: !!user, 
+      loading 
+    }}>
       {children}
     </AuthContext.Provider>
   );

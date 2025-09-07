@@ -1,5 +1,5 @@
 
-import { useLocation, Link as RouterLink, useNavigate } from 'react-router-dom';
+import { useLocation, Link as RouterLink } from 'react-router-dom';
 import {
   Drawer,
   List,
@@ -20,7 +20,6 @@ import {
   Receipt as TransactionsIcon,
   Settings as SettingsIcon,
   Logout as LogoutIcon,
-  ChevronRight as ChevronRightIcon,
   HelpOutline as HelpIcon
 } from '@mui/icons-material';
 import React from 'react';
@@ -67,7 +66,6 @@ export const Sidebar = ({
   userName = 'Vinamra Parashar'
 }: SidebarProps) => {
   const location = useLocation();
-  const navigate = useNavigate();
   const isMobile = useMediaQuery('(max-width: 600px)');
 
   // Update document title based on current route
