@@ -27,11 +27,11 @@ const DEMO_USERS = [
     password: 'password1', 
     name: 'Vinamra Parashar', 
     accountNumber: '23310972560',
-    balance: 256374
+    balance: 351374
   },
   { 
     username: 'user2', 
-    password: 'password2', 
+    password: 'password2cvv', 
     name: 'Jane Smith', 
     accountNumber: '0987654321',
     balance: 150000
